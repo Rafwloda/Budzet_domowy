@@ -6,7 +6,7 @@ namespace Budzet_domowy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World! aa");
+            Console.WriteLine("Hello World! aa!!");
         }
     }
 }
