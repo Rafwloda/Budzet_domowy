@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
-
+using System.Runtime.Serialization;
 
 namespace Budzet_domowy.Classes.BuisnessLogic
 {
-    class User
+    [DataContract]
+    public class User : XmlStorage<User>
     {
-        List<string> invalidChars = new List<string>() { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-" };
         
         private string m_sUserName, m_sLogin, m_sEmail, m_sPassword;
 
 
-
+        [DataMember]
         public string UserName
         {
             get => m_sUserName;
@@ -27,11 +27,14 @@ namespace Budzet_domowy.Classes.BuisnessLogic
             }
             
         }
+        [DataMember]
         public string Login
         {
             get => m_sLogin;
             set
             {
+                List<string> invalidChars = new List<string>() { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-" };
+
                 if (string.IsNullOrEmpty(value))
                 {
                     throw new Exception("Pole 'Login' nie może być puste");
@@ -55,6 +58,7 @@ namespace Budzet_domowy.Classes.BuisnessLogic
                 - Sprawdzenie na poziomie klasy czy gdzie indziej?
             */
         }
+        [DataMember]
         public string Email
         {
             get => m_sEmail;
@@ -72,6 +76,7 @@ namespace Budzet_domowy.Classes.BuisnessLogic
                 - Sprawdzenie na poziomie klasy czy gdzie indziej?
             */
         }
+        [DataMember]
         public string Password
         {
             get => m_sPassword;
@@ -86,6 +91,16 @@ namespace Budzet_domowy.Classes.BuisnessLogic
                 }
                 m_sPassword = value;
             }
+        }
+
+        public override bool InitializeFromObject(User Object)
+        {
+            this.UserName = Object.UserName;
+            this.Login = Object.Login;
+            this.Email = Object.Email;
+            this.Password = Object.Password;
+
+            return true;
         }
     }
 }
