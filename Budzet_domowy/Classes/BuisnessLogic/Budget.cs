@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Budzet_domowy
+namespace Budzet_domowy.Classes.BuisnessLogic
 {
     class Budget
     {

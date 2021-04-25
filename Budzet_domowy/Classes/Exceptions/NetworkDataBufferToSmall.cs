@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GRUPA_K13.Classes.Exceptions
+namespace Budzet_domowy.Classes.Exceptions
 {
     public class NetworkDataBufferToSmall : Exception
     {

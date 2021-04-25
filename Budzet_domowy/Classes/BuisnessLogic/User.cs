@@ -5,7 +5,7 @@ using System.Net.Mail;
 using System.Text.RegularExpressions;
 
 
-namespace Budzet_domowy
+namespace Budzet_domowy.Classes.BuisnessLogic
 {
     class User
     {
